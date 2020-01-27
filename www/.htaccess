@@ -1,0 +1,2 @@
+FcgidWrapper "/FULL/PATH/TO/engine" virtual
+SetHandler fcgid-script

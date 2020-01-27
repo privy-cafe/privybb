@@ -1,0 +1,3 @@
+Options  ExecCGI
+FcgidWrapper /home/unknownvoid/homevar/www/web/privy.cafe/engine virtual
+SetHandler fcgid-script

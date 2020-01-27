@@ -1,0 +1,14 @@
+/* minimag formatting styles */
+div.post_text article{
+/* Headings */
+;
+/* paragraph style */
+;
+/* source code inline and blocks */
+;
+/* Style of the text included image. */
+;
+/* article tables */
+;
+/* block quotes */
+}div.post_text article h1,div.post_text article h2,div.post_text article h3,div.post_text article h4,div.post_text article h5,div.post_text article h6{margin:1rem 0 1rem 0}div.post_text article h1{font-size:1.5rem}div.post_text article h2{font-size:1.4rem}div.post_text article h3{font-size:1.3rem}div.post_text article h4{font-size:1.2rem}div.post_text article h5{font-size:1.1rem}div.post_text article h6{font-size:1rem}div.post_text article span.underlined{text-decoration:underline}div.post_text article p{text-align:justify;margin-top:0.75em;margin-bottom:0.75em;word-wrap:anywhere;hyphens:auto}div.post_text article ol,div.post_text article ul{padding-left:4ch}div.post_text article li{margin:0.5em 0 0.5em 0;list-style-position:inside}div.post_text article code.block{display:block;text-align:left;font-family:Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;padding:0.5em;margin:0.5em 0px;overflow:auto;white-space:pre;clear:both;border-left:4px solid #e05050}div.post_text article code{display:inline;font-family:Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;font-weight:bold;word-break:break-all;white-space:pre-wrap}div.post_text article img.ico{display:inline-block;vertical-align:middle;overflow:hidden;margin:0px 4px}div.post_text article img.txt{border-style:none;border-width:0px;margin:8px auto;display:block;max-width:95%}div.post_text article img.txt1{border-style:none;border-width:0px;display:block;float:left;clear:left;margin-right:8px;margin-bottom:8px}div.post_text article img.txt2{border-style:none;border-width:0px;display:block;float:right;clear:right;margin-left:8px;margin-bottom:8px}div.post_text article table{border-right-width:2px;border-bottom-width:2px;border-style:solid;border-color:#404040;margin:0.2em;background-color:white;border-collapse:collapse}div.post_text article table td{font-size:1em;border-left-width:2px;border-top-width:2px;border-right-width:0px;border-bottom-width:0px;border-style:solid;border-color:#404040;padding:0.1em 0.2em;margin:0}div.post_text article blockquote{border:2px solid #404040;box-shadow:4px 4px 2px rgba(0, 0, 0, 0.2);padding:0em 0.7em 0.1em 1em;margin:1em;background-color:white;clear:both}div.post_text article blockquote header{margin:0;padding:2px;background-color:#ffcc40;font-size:1em;font-style:italic;clear:both;overflow:hidden}

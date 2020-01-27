@@ -1,0 +1,191 @@
+# AsmBB installation guide
+
+## Preface
+
+This package contains the forum engine AsmBB, which is high performance
+web forum engine, written entirely in assembly language.
+
+This package is the binary release of the engine, but it is free open source
+distributed under EUPL license (the file License.txt) and you can download
+the source code from the source repository (fossil), located on:
+
+               http://asm32.info/fossil/repo/asmbb/
+
+## Prerequisites
+
+In order to use AsmBB you will need running web server, supporting FastCGI 
+protocol. Most web servers will do the job. Particularly Apache.
+
+You can install AsmBB on local server (for testing) on shared hosting or any
+other hosting option.
+
+The only mandatory condition is that the server must run on x86 or x86-64 
+Linux platform and the fastcgi module should be enabled (most servers running
+php has it enabled anyway).
+
+AsmBB is self sufficient and does not requires any libraries or databases 
+installed on the server.
+
+In order to send mails to the forum users, AsmBB will need the address and 
+port number of SMTP server that is accessible from your web server without
+authentication. Most SMTP servers provided by the web hosting will not need 
+authentication if connected from the local network (i.e. the web site engine).
+
+
+## Installation
+
+First unpack the files in temporary directory. Depending on your server
+edit the file .htaccess (Apache) or lighttpd.conf (lighttpd) - 
+Change the "_FULL_PATH_TO_DOCUMENT_ROOT_HERE_" placeholder to the real
+path to your document root (it depends on the web server settings).
+
+IMPORTANT: Ensure that the uploaded files have the proper permissions for the 
+www-data user (the web server user). The www-data user will need writing 
+permissions in the DOCUMENT_ROOT directory. The executable files must have 
+755 permissions.
+
+IMPORTANT FOR Lighttpd: The provided in the package file "lighttpd.cond is just an 
+example. Lighttpd keeps its config files in: "/etc/lighttpd/lighttpd.conf" and all 
+files in "/etc/lighttpd/conf-enabled/" directory. You will need to merge the example 
+config in the existing files in one or another consistent way and then restart lighttpd.
+
+If using another web server, prepare the configuration by yourself.
+
+Upload all files (and direcrories) of the package to the document_root directory 
+of your web server. 
+
+IMPORTANT: The package may contain some symlinks. Ensure they are
+uploaded together with the files. Notice, that FTP can't upload symlinks. 
+
+The simplest way is to upload the tarball to the server and unpack there 
+by using cpanel tools, ssh or any other way.
+
+Read the chapter "Easy Installation on Apache by FTP" below, about how to make 
+the proper upload by FTP.
+
+Test the forum by loading the web site in your favourite browser.
+
+As simple as that. 
+
+
+## Easy Installation on Apache by FTP
+
+Download the package "unpack.tar.gz" from: 
+
+http://asm32.info/fossil/repo/asmbb/doc/trunk/install/unpack.tar.gz
+
+Untar it. There are 2 files: ".htaccess" and "unpack.sh";
+
+Upload these 2 files and "asmbb.tar.gz" on the server document_root via ftp or 
+any other way. The root directory must contain these 3 files:
+
+.htaccess
+asmbb.tar.gz
+unpack.sh
+
+Load in some browser: http://your_web_size/unpack.sh
+
+The script will unpack all files, prepare the proper .htaccess file and redirect you
+to the new created forum working in setup mode.
+
+
+## Installation on VPS with nginx and systemd
+
+### Prerequisites 
+
+* VPS with GNU/Linux OS installed that uses systemd.
+
+* Installed and working Nginx web server. I will explain only how to integrate AsmBB.
+
+### Installing AsmBB
+
+Download the recent binary package from the permanent link: *[https://asm32.info/fossil/repo/asmbb/doc/trunk/install/asmbb.tar.gz][asmbb.tar.gz]*
+
+Create a new directory, where the forum sub-domain will stay. I will name it `/PATH/TO/FORUM/`. Put the downloaded file inside.
+
+Untar with the following commands:
+
+    $ tar -xvzf asmbb.tar.gz
+    $ mv asmbb/* ./
+    $ rm -rf asmbb/
+
+After the unpack, there are some unneeded files, like text files and example config files in the directory. You can safely delete them. Only the subdirectories and 3 executable files are required. Notice that the subdirectories may contain some important symlinks, so unpacking on local computer and then uploading through FTP will not work (because FTP can't copy symlinks).
+
+All the files and the directory must be owned by some non-root user that will run AsmBB later. I will name it `NON_ROOT`.
+
+### Nginx configuration
+
+Insert in the nginx config file (in `/etc/nginx/nginx.cong` or in the forum sub-domain configuration file) the following:
+
+    server {
+      ..... # Your subdomain server configuration. 
+            # Should contains at least "listen" and "server_name" nginx options.
+    
+      root /PATH/TO/FORUM/;
+    
+      location / {
+        fastcgi_pass unix:/PATH/TO/FORUM/engine.sock;  
+        include fastcgi_params;
+      }
+    }
+
+Don't forget to replace the placeholders!
+
+Restart Nginx:
+
+    $sudo systemctl restart nginx
+
+### Systemd configuration
+
+Now configure systemd service that to manage AsmBB engine.
+
+Will need root access here. Create as a root the file `/etc/systemd/system/asmbb.service` with the following text (of course replace the placeholders `/PATH/TO/FORUM` and `NON_ROOT`:
+
+[Unit]
+Description=AsmBB forum engine FastCGI script.
+After=nginx.service
+
+    [Service]
+    Type=simple
+    User=NON_ROOT
+    WorkingDirectory=/PATH/TO/FORUM
+    ExecStart=/PATH/TO/FORUM/engine
+    Restart=on-failure
+
+    [Install]
+    WantedBy=nginx.service
+
+### Finalizing
+
+Now the configuration is finished. You can open the forum sub-domain in your browser. You should get `502 bad gateway` error, because AsmBB is still not running.
+
+Start AsmBB:
+
+    $sudo systemctl start asmbb
+
+Refresh the browser. The admin setup dialog of AsmBB should appear. Setup your admin user and the forum should start working in regular mode.
+
+If everything is OK until now, let's make the startup of AsmBB automatic on server restart:
+
+    $sudo systemctl enable asmbb
+
+That is all. 
+
+
+## Introduction to the forum configuration.
+
+When run for the first time, AsmBB will create an empty database for the 
+forum - a file, named board.sqlite in the root directory.
+
+Until there is no users registered, AsmBB will run in setup mode, displaying 
+the administrator user creation dialog. 
+
+The registration of the admin user will not need email activation and is pretty
+liberal about the quality of the password. But you as an administrator of the 
+forum, better choose strong password and whatever nickname you prefer. 
+
+After creation the administrator user, the access to the forum settings is 
+rescticted only for the users with administrator privilegies.
+
+Set the SMTP server and other forum parameters in the settings page.    
+

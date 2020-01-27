@@ -1,0 +1,159 @@
+@import "skin_variables.lsi";
+
+/* Threads list styles */
+
+div.threads_list {
+  margin: auto;
+  clear: both;
+}
+
+
+.thread_summary {
+  overflow: hidden;
+  margin: 8px 0px;
+  line-height: 180%;
+
+  background-color: @clDarkBG;
+  color: @clDarkFG;
+  padding: 8px;
+  border: @borderEdit;
+
+  a {
+    color: @clColor1FG;
+  }
+}
+
+img.markread {
+  display: inline-block;
+  line-height: 16px;
+  color: @clPinnedTxt;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+img.unread {
+  vertical-align: middle;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.pinned {
+  display: inline-block;
+  width: @pinnedWidth;
+  height: @pinnedHeight;
+  line-height: @pinnedHeight;
+  margin: 0px 8px 0px 0px;
+  font-size: 24px;
+  color: @clPinnedTxt;
+  font-weight: bold;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+
+a.thread_link {
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+//  white-space: nowrap;
+  flex-grow: 1;
+}
+
+
+.category {
+  margin: 8px 0px;
+  background-color: @clDarkBG;
+  color: @clDarkFG;
+  padding: 8px;
+  border: @borderEdit;
+
+  a {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 8px;
+    text-decoration: none;
+    color: @clColor1FG;
+    min-height: 64px;
+
+    span {
+      font-size: 20px;
+      font-weight: black;
+      text-transform: uppercase;
+    }
+  }
+
+  div:first-child {
+    display: block;
+    width: auto;
+    float: left;
+    text-align: center;
+    background-color: @clDarkBG;
+    margin: 8px 8px 8px 0px;
+  }
+
+  div {
+    text-align: center;
+    width: 30%;
+    display: inline-block;
+    span {
+      font-size: 24px;
+      font-weight: bold;
+      color: @clButtonBG;
+    }
+  }
+}
+
+
+.comma > * {
+  display: inline-block;
+
+  &::after {
+    content: ', ';
+    text-decoration: none;
+    margin-right: 4px;
+  }
+
+  &:last-child::after {
+    content: ' ';
+  }
+}
+
+
+
+.posters {
+  margin: 0;
+  font-weight: bold !important;
+  * {
+    font-weight: normal;
+  }
+}
+
+.invited {
+  margin: 0;
+  font-weight: bold !important;
+  * {
+    font-weight: normal;
+  }
+}
+
+
+.thread_tags {
+  font-weight: bold !important;
+  margin: 0;
+
+  * {
+    font-weight: normal;
+  }
+}

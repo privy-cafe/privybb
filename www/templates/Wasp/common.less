@@ -1,0 +1,481 @@
+@import "skin_variables.lsi";
+
+body {
+  font-size: @FontSize;
+  font-family: @FontMain;
+  background-color: @clBodyBG;
+  color: @clBodyFG;
+
+  * {
+    box-sizing: border-box;
+    padding: 0px;
+  }
+
+}
+
+
+a {
+  color: black;
+}
+
+
+input {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+/* header styles */
+
+div.header {
+  width: @globWidth;
+  max-width: @globMaxWidth;
+  margin: @globMargin;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: @HeaderBackground;
+
+  padding: @paddingHeader;
+
+  img {
+    padding: 0px;
+    margin: 0px;
+    display: block;
+    max-width: 100%;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: @FontMonospace;
+    white-space: pre;
+    color: @clHeaderShadow;
+    line-height: 16px;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: @clHeader;
+  }
+
+  div {
+    text-align: right;
+    margin-left: 16px;
+
+    a, .logout {
+      background-color: transparent;
+      border: none;
+      font-weight: bold;
+      text-align: right;
+      display: inline;
+      line-height: 1.5em;
+      text-shadow: 2px 2px @clColor1, -2px -2px @clColor1, 2px -2px @clColor1, -2px 2px @clColor1;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+// This is a class that separate left-aligned and right-aligned items in a flexbox.
+.spacer {
+  flex-grow: 1;
+  min-width: 0px;
+  display:block;
+}
+
+
+/* Search form styles */
+
+form#search_form {
+  width: @globWidth;
+  max-width: @globMaxWidth;
+  margin: @globMargin;
+  display: flex;
+}
+
+.search_line {
+  height: 32px;
+  margin: 0px 8px 0px 0px;
+  padding: 4px 8px;
+  border: @borderEdit;
+  background-color: @clDarkBG;
+  color: @clDarkFG;
+  display:block;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 0px;
+}
+
+
+.icon_btn {
+  height: 32px;
+  line-height: 32px;
+  min-width: 32px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  text-align: center;
+
+  display: inline-block;
+
+  border: @borderButton;
+  border-radius: @borderNavRad;
+
+  background-color: @clButtonBG;
+  color: @clButtonFG;
+}
+
+.img_btn {
+  width: 32px;
+  height: 32px;
+}
+
+.img_input {
+  background-color: @clButtonBG;
+  color: @clButtonFG;
+  border: @borderButton;
+  border-radius: @borderNavRad;
+}
+
+
+.search_btn:hover {
+  background-color: @clButtonActiveBG;
+  border: @borderButtonActive;
+}
+
+/* Footer styles */
+
+div.footer {
+  background-color: @clDarkBG;
+  color: @clDarkFG;
+  font-size: 90%;
+  width: @globWidth;
+  max-width: @globMaxWidth;
+  margin: 8px auto 0px auto;
+  line-height: 1em;
+  padding: @paddingFooter;
+  clear: both;
+
+  p {
+    margin: 4px 0px 0px 0px;
+  }
+  a {
+    font-weight: bold;
+    color: @clColor1FG;
+  }
+}
+
+div.attribution {
+  width: @globWidth;
+  max-width: @globMaxWidth;
+  margin: @globMargin;
+  padding: 4px 0px;
+}
+
+
+/* tag list styles */
+
+div.tags {
+  width: @globWidth;
+  max-width: @globMaxWidth;
+  max-height: 256px;
+  overflow: auto;
+  margin: @globMargin;
+  padding: @paddingTags;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: left;
+
+  background-color: @clDarkBG;
+  font-size: 28px;
+  font-weight: normal;
+
+  line-height: 80%;
+  border-bottom: @borderEdit;
+
+  a {
+    color: @clDarkFG;
+    padding: @paddingOneTag;
+    margin: @marginOneTag;
+    text-decoration: none;
+    position: relative;
+  }
+}
+
+span.ntf {
+  display: inline-block;
+  border-radius: 50%;
+
+  background-color: @clNotifyBG;
+  color: @clNotifyFG;
+
+  font-size: 12px;
+  line-height: 12px;
+  vertical-align: middle;
+  font-weight: bold;
+  margin-left: 0.5ch;
+
+  &::before, &::after {
+    content:'\200B';    // zero width space!
+    display:inline-block;
+    line-height:0px;
+    padding-top:50%;
+    padding-bottom:50%;
+  }
+
+  &::before {
+    padding-left: 8px;
+  }
+
+  &::after {
+    padding-right: 8px;
+  }
+
+}
+
+
+a.taglink {
+  display:inline-block;
+  min-width: 16px;
+  overflow: visible;
+  text-overflow: ellipsis;
+  border-radius: @borderRadTags;
+  border: @borderTags;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+}
+
+a.current_tag {
+  background-color: @clCurrentTagBG;
+  color: @clCurrentTagFG !important;
+  text-decoration: none;
+}
+
+.tagsize00 { font-size: 30% }
+.tagsize01 { font-size: 30% }
+.tagsize02 { font-size: 30% }
+.tagsize03 { font-size: 32% }
+.tagsize04 { font-size: 35% }
+.tagsize05 { font-size: 41% }
+.tagsize06 { font-size: 47% }
+.tagsize07 { font-size: 52% }
+.tagsize08 { font-size: 57% }
+.tagsize09 { font-size: 62% }
+.tagsize10 { font-size: 66% }
+.tagsize11 { font-size: 70% }
+.tagsize12 { font-size: 73% }
+.tagsize13 { font-size: 76% }
+.tagsize14 { font-size: 79% }
+.tagsize15 { font-size: 81% }
+.tagsize16 { font-size: 83% }
+.tagsize17 { font-size: 85% }
+.tagsize18 { font-size: 87% }
+.tagsize19 { font-size: 89% }
+.tagsize20 { font-size: 90% }
+.tagsize21 { font-size: 91% }
+.tagsize22 { font-size: 93% }
+.tagsize23 { font-size: 94% }
+.tagsize24 { font-size: 95% }
+.tagsize25 { font-size: 96% }
+.tagsize26 { font-size: 97% }
+.tagsize27 { font-size: 97% }
+.tagsize28 { font-size: 98% }
+.tagsize29 { font-size: 99% }
+.tagsize30 { font-size: 99% }
+.tagsize31 { font-size: 100% }
+.tagsize32 { font-size: 100% }
+
+
+img.tagicon {
+  display: table-cell;
+  width: 32px;
+  height: 32px;
+  margin-right: 4px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+
+/* messages screen */
+
+div.message_block {
+  font-size: 20px;
+  width: @msgBoxWidth;
+  background: @clArticleBG;
+  color: @clArticleFG;
+  margin: 8px auto;
+  text-align: center;
+  padding: 20px;
+  clear: both;
+}
+
+div.message_block h1 {
+    text-align: center;
+    font-size: 21px;
+    font-variant: small-caps;
+    margin: 0px;
+}
+
+div.message_block a {
+  display: inline-block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+}
+
+div.message_block a:hover {
+  color: #f06060;
+}
+
+
+div.message {
+  white-space: pre-wrap;
+  padding: 64px;
+  margin: 0px auto;
+  text-align: left;
+  color: black;
+  display: inline-block;
+}
+
+.small {
+  font-size: 80%;
+  font-weight: normal;
+}
+
+
+/* Decorative checkbox mechanism. The label tag, must be styled separately! */
+
+input[type=checkbox] {
+  position: absolute;
+  z-index: -1;
+  left: -10000px;
+
+  &:focus + label::before {
+    outline: 2px dotted black;
+    outline-offset: 1px;
+  }
+
+  &:checked + label::before {
+    color: lime;
+    background-color: lime;
+  }
+
+  &:checked + .popup {
+    display: block;
+    opacity: 1;
+  }
+
+  + label {
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      background-color: white;
+      border: 2px solid @clSeparator;
+      margin-right: 12px;
+      vertical-align: bottom;
+    }
+  }
+
+// Collapsable block of elements.
+  &.collapseit {
+    &:checked {
+    }
+    &:not(:checked) {
+      & + * {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+
+
+/* Tabbed navigation handling */
+
+.tabbed {
+  flex-grow: 1;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  & > input {
+    position: absolute;
+    opacity: 0;
+    & + label {
+      float: left;
+      -webkit-user-select: none; /* Safari 3.1+ */
+      -moz-user-select: none; /* Firefox 2+ */
+      -ms-user-select: none; /* IE 10+ */
+      user-select: none; /* Standard syntax */
+
+      padding: 8px 16px;
+      font-size: @FontSize;
+      line-height: @FontSize;
+      border-top: 2px solid transparent;
+      cursor: pointer;
+      font-weight: bold;
+      color: black;
+
+      &:hover {
+        background: @clTabHover;
+      }
+
+      & + section {
+        position: absolute;
+        top: 32px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+
+        display: none;
+        padding: 8px;
+        background: @clTabBG;
+        flex-direction: column;
+      }
+    }
+
+    &:focus + label {
+      border-top: 2px solid @clTabFocus;
+      z-index: 1;
+    }
+
+    &:checked + label {
+      background: @clTabBG;
+      color: @clTabFG;
+      & + section {
+        display: flex;
+      }
+    }
+  }
+}
+
+
+
