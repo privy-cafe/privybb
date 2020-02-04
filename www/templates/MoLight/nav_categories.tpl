@@ -1,1 +1,0 @@
-../Wasp/nav_categories.tpl

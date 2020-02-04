@@ -57,7 +57,7 @@
   <link rel="manifest" href="/images/favicons/manifest.json">
   <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg">
   <link rel="shortcut icon" href="/images/favicons/favicon.ico">
-  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileColor" content="#00000">
   <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
   <meta name="msapplication-config" content="/images/favicons/browserconfig.xml">
   <meta name="theme-color" content="#000">
@@ -68,6 +68,9 @@
 
   <script type='text/javascript'>
     [raw:realtime.js]
+    document.getElementById('signout-button').addEventListener('click', function() {
+   blockstack.signUserOut(window.location.origin)
+ })
   </script>
 
 </head>
