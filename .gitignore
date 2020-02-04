@@ -1,1 +1,8 @@
-x
+/node_modules
+asmbb_queue.lock  
+board.sqlite-shm
+/_matrix 
+engine.sock
+board.sqlite  
+board.sqlite-shm  
+board.sqlite-wal
