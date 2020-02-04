@@ -6,3 +6,4 @@ engine.sock
 board.sqlite  
 board.sqlite-shm  
 board.sqlite-wal
+/www
