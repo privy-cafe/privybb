@@ -1,2 +1,0 @@
-#!/usr/bin/sh
-nginx -c /work/asmwork/ProjAsmBoard/www/.nginx/nginx.conf
