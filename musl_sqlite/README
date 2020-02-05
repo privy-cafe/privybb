@@ -1,4 +1,5 @@
-In order to build the required by AsmBB libraries (musl and sqlite3) 
+In order to build the required by PrivyBB libraries (musl and sqleet)
+We aim to keep the code base small.
 you need to have the following tools installed and working:
 
 gcc
@@ -31,11 +32,12 @@ $ ./build
 
 The script will compile the sqlite3 library with musl and will create
 two files: "libsqlite3.so" and "ld-musl-i386.so"; Copy these files
-in the AsmBB directory in order to use them.
+in the  PrivyBB directory in order to use them.
 
 This script is called automatically from the script 
 "install/create_relese.sh" that creates the binary release archives.
 
 
-Report every building problems. I am testing on Manjaro/Arch linux
+Report every building problems. I tested build on devuan and manjaro 
+( fast arch solutions say thanks to moony he influenced me  otherwise wouldn't have tested it at all)
 and some problems on other distributions are possible (but not expected).
