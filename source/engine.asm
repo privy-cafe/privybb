@@ -3,13 +3,13 @@
 ;| ..:: Fresh IDE ::..  template project.                                                |
 ;|_______________________________________________________________________________________|
 ;
-;  Description: AsmBoard is assembly written message board engine working over FastCGI
+;  Description: Privy / privybb / Asmbb /ASM Board  Board is assembly written message board engine working over FastCGI
 ;
 ;  Target OS: Any, supported by FreshLib
 ;
-;  Dependencies: FreshLib
+;  Dependencies: FreshLib / or can be assembled with fasm
 ;
-;  Notes:
+;  Notes: adjust the include if you do not want freshlib
 ;_________________________________________________________________________________________
 
 include "%lib%/freshlib.inc"
